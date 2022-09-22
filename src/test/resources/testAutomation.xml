@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test Automation 2022" >
+    <test name="TestCases Examples">
+        <groups>
+            <run>
+                <include name="all"/>
+                <exclude name="dynamicDP"/>
+            </run>
+        </groups>
+        <parameter name="Parameter1" value="Tests"/>
+        <parameter name="Parameter2" value="AUtomation"/>
+        <classes>
+            <class name="parametersXml.ParametersXml"/>
+            <class name="dataProviders.DataProviderStatic"/>
+            <class name="dataProviders.DataProviderDynamic"/>
+        </classes>
+    </test>
+</suite>
