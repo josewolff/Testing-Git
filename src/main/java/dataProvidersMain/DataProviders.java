@@ -1,6 +1,12 @@
 package dataProvidersMain;
 
+import apiTestingAuxClasses.RequestMaker;
+import com.github.javafaker.Faker;
+import io.restassured.response.Response;
+import org.json.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Factory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,5 +32,22 @@ public class DataProviders {
         }
         return data.iterator();
     }
+
+
+    @DataProvider(name ="apiTestDP", parallel = true)
+    public Iterator<Object[]> apiTestDP(){
+        List<Object[]> data =  new ArrayList<Object[]>();
+        Faker faker = new Faker();
+        for (int i = 0; i < 400; i++){
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("firstname", faker.name().firstName())
+                    .put("lastname", faker.name().lastName())
+                    .put("username",faker.name().username())
+                    .put("email",faker.internet().emailAddress());
+            data.add(new Object[]{jsonObject.toString()});
+        }
+        return data.iterator();
+    }
+
 
 }

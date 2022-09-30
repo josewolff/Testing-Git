@@ -1,6 +1,8 @@
 package apiTesting;
 
 import apiTestingAuxClasses.RequestMaker;
+import com.github.javafaker.Faker;
+import dataProvidersMain.DataProviders;
 import io.restassured.response.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,19 +26,14 @@ public class APITest {
         }
     }
 
-    @Test(groups = {"all","post"})
-    public void postMethod(){
+    @Test(groups = {"all","post"},
+            dataProviderClass = DataProviders.class,
+            dataProvider = "apiTestDP")
+    public void postMethod(String bodyString){
         String getAllUsers = GlobalVariables.apiHost  + "/users/add";
-        for (int i = 0; i < 300; i++){
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("firstname", "Wolff" + i)
-                    .put("lastname", "Jose" + i)
-                    .put("username","josewolff"+ i)
-                    .put("email","wolff@laserants.com"+ i);
-            Response response = RequestMaker.makePostRequest(getAllUsers, jsonObject.toString());
-            System.out.println(response.asString());
-        }
-
+        Response response = RequestMaker.makePostRequest(getAllUsers, bodyString);
+        System.out.println(response.asString());
+        Assert.fail();
     }
 
     @AfterClass
