@@ -1,18 +1,23 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Test Automation 2022" >
+    <parameter name="apiHost" value="http://localhost:5001"/>
+    <parameter name="Parameter2" value="AUtomation"/>
     <test name="TestCases Examples">
         <groups>
             <run>
-                <include name="all"/>
+                <include name="post"/>
                 <exclude name="dynamicDP"/>
             </run>
         </groups>
-        <parameter name="Parameter1" value="Tests"/>
-        <parameter name="Parameter2" value="AUtomation"/>
         <classes>
             <class name="parametersXml.ParametersXml"/>
             <class name="dataProviders.DataProviderStatic"/>
             <class name="dataProviders.DataProviderDynamic"/>
+            <class name="apiTesting.APITest"/>
         </classes>
     </test>
+
+    <listeners>
+        <listener class-name="listeners.UFMListener"/>
+    </listeners>
 </suite>
