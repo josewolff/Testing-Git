@@ -2,6 +2,7 @@ package systemTesting;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,16 +39,22 @@ public class InitDriver {
 
     private WebDriver initDriver(String browser) {
         try {
-            selectDriverBasedOnOs();
+            String operativeSystem = selectDriverBasedOnOs();
             if (browser.equals("firefox")) {
                 System.setProperty("webdriver.gecko.driver", geckoDriver);
 
                 driver = new FirefoxDriver();
                 driver.manage().window().maximize();
             } else {
+                System.setProperty("webdriver.chrome.driver", chromeDriver);
                 if (browser.equals("chrome")) {
-                    System.setProperty("webdriver.chrome.driver", chromeDriver);
-                    driver = new ChromeDriver();
+                    if(operativeSystem.contains("linux")){
+                        ChromeOptions opt = new ChromeOptions();
+                        opt.addArguments("--headless");
+                        driver = new ChromeDriver(opt);
+                    }else {
+                        driver = new ChromeDriver();
+                    }
                 } else if (browser.equals("safari")) {
                     driver = new SafariDriver();
                     driver.manage().window().maximize();
@@ -63,7 +70,7 @@ public class InitDriver {
         }
     }
 
-    private void selectDriverBasedOnOs(){
+    private String selectDriverBasedOnOs(){
         String operativeSystem = System.getProperty("os.name").toLowerCase();
         System.out.println("############## operative System \n " + operativeSystem + "\n#################");
 
@@ -76,5 +83,6 @@ public class InitDriver {
         }else if(operativeSystem.contains("linux")){
             chromeDriver = "drivers/linux/chromedriver";
         }
+        return operativeSystem;
     }
 }
