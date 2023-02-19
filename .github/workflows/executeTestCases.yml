@@ -31,8 +31,4 @@ jobs:
             distribution: 'adopt'
 
       - name: execute-maven-tests
-        run: | 
-          ls
-          cd ../../../../
-          ls
-          mvn test
+        run: mvn test
