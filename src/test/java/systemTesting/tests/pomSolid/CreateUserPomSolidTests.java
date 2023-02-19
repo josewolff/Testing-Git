@@ -20,5 +20,7 @@ public class CreateUserPomSolidTests extends InitDriver {
     public void f() throws InterruptedException {
         Thread.sleep(5000);
         createUser.createUserMethod();
+        System.out.println(driver.getCurrentUrl());
+        System.out.println(driver.getPageSource());
     }
 }
