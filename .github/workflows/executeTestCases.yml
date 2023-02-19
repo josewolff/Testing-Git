@@ -13,7 +13,7 @@ jobs:
 
       - name: Run simple command
         run: |
-          echo ls,
+          ls,
           cd src/main/resources/docker-System,
           docker-compose up
 
