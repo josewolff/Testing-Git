@@ -65,6 +65,8 @@ public class InitDriver {
 
     private void selectDriverBasedOnOs(){
         String operativeSystem = System.getProperty("os.name").toLowerCase();
+        System.out.println("############## operative System #################");
+
         if(operativeSystem.contains("mac")){
             geckoDriver = "drivers/mac/geckodriver";
             chromeDriver = "drivers/mac/chromedriver";
