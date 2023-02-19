@@ -73,6 +73,8 @@ public class InitDriver {
         }else if(operativeSystem.contains("windows")){
             geckoDriver = "drivers/windows/geckodriver.exe";
             chromeDriver = "drivers/windows/chromedriver.exe";
+        }else if(operativeSystem.contains("linux")){
+            chromeDriver = "drivers/linux/chromedriver";
         }
     }
 }
