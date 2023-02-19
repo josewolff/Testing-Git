@@ -32,4 +32,6 @@ jobs:
 
       - name: execute-maven-tests
         run: | 
-          cd ../../../../mvn test
+          cd ../../../../
+          ls
+          mvn test
