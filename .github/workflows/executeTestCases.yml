@@ -15,7 +15,7 @@ jobs:
         run: |
           ls,
           cd src/main/resources/docker-System,
-          docker-compose up
+          ls
 
       - name: Run two commands
         run: | 
