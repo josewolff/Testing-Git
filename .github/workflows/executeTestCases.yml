@@ -21,7 +21,7 @@ jobs:
         run: curl localhost:8081
 
   execute-system-tests:
-    needs: docker-compose-up
+    needs:  starts-docker-image
     runs-on: ubuntu-latest
 
     steps:
