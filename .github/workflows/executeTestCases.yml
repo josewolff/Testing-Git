@@ -20,11 +20,6 @@ jobs:
       - name: curls request
         run: curl localhost:8081
 
-  execute-system-tests:
-    needs:  starts-docker-image
-    runs-on: ubuntu-latest
-
-    steps:
       - uses: actions/checkout@v3
       - uses: browser-actions/setup-chrome@v1
       - run: chrome --version
@@ -36,4 +31,5 @@ jobs:
             distribution: 'adopt'
 
       - name: execute-maven-tests
-        run: mvn test
+        run: | 
+          cd ../../../../mvn test
