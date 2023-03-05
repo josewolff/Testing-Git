@@ -1,0 +1,17 @@
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  starts-docker-image:
+    runs-on: ubuntu-latest
+
+    env:
+      var1: "hello"
+      var2: "world"
+
+    steps:
+      - name: print-values
+        run: |
+          echo "${{ env.var1 }}"
+          echo "Hello $var2"

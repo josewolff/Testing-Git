@@ -2,7 +2,7 @@ name: Execute tests
 
 on:
   push:
-    branches: ["master"]
+    branches: ["dev"]
 
 jobs:
   starts-docker-image:
@@ -13,7 +13,6 @@ jobs:
 
       - name: docker-compose-up
         run: |
-          ls
           cd src/main/resources/docker-System
           docker-compose up -d
 
