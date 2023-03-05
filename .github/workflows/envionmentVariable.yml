@@ -1,3 +1,5 @@
+name: PrintEnvVariables
+
 on:
   push:
     branches: ["master"]
