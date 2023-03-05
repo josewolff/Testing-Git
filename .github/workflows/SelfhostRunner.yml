@@ -1,0 +1,13 @@
+name: Selfhost runner
+
+on: workflow_dispatch
+
+jobs:
+  hello-self-hosted-runner:
+    runs-on: [self-hosted,  macOS,  X64]
+    steps:
+      - name: run in selfhost
+        run: echo "Running in selfhost runneer"
+
+      - name: sleep 100 seconds
+        run: sleep 100
