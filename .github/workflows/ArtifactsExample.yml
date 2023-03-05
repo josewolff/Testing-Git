@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: "Create local file"
         run: echo "Creating local file as artifact" > file.txt
-      - users: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
           name: file
           path: file.txt
@@ -19,7 +19,7 @@ jobs:
     needs: uploadArtifact
     steps:
       - name: "download file"
-      - users: actions/download-artifact@v3
+      - uses: actions/download-artifact@v3
         with:
           name: file
       - run: cat file.txt
